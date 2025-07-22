@@ -1,0 +1,201 @@
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background-color: rgb(2, 3, 48);
+}
+.header{
+    color: lightgray;
+    height: 10%;
+    width: 99%;
+    position: fixed;
+    background-color: rgb(2, 3, 48);
+    display: flex;
+    border-bottom: 0.05rem solid lightgray;
+    z-index: 1;
+}
+header a{
+    font-size: xx-large;
+    margin:1rem;
+    margin-left: 2rem;
+    color:lightgray;
+    text-decoration: none;
+}
+
+header a:hover{
+    color: rgb(70, 70, 83);;
+}
+
+.fake-header{
+    height: 10%;
+    width: 99%;
+}
+.header-text{
+    display: flex;
+    align-items: center;
+    margin-left: 8rem;
+}
+.header-text i{
+    font-size: 3rem;
+}
+.text-add{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-icon{
+    height: 3rem;
+    width: 3rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:0.05rem solid lightgray;
+    border-radius:25%;
+}
+.menu-icon:hover{
+    background-color:rgb(70, 70, 83);
+    cursor: pointer;
+}
+.menu-icon i{
+    font-size: 1.8rem
+}
+.menu{
+    color: lightgray;
+    height: 90%;
+    width: 20%;
+    position: fixed;
+    top: 10%;
+    background-color: rgb(6, 6, 46);
+    border-right:0.05rem solid lightgray;
+    z-index: 2;
+}
+form{
+    text-align: center;
+    width: 100%;
+    height: 50%;
+}
+form h3{
+    margin: 2rem;
+}
+form button{
+    width: 10rem;
+    height: 3rem;
+    padding: 0.5rem;
+    font-size: larger;
+    font-weight: bold;
+    margin: 2rem;
+    border-radius: 0.5rem;
+    color: lightgray;
+    background: #0b0d6e;
+}
+form h2{
+    margin:3rem;
+}
+
+.advice{
+    text-align: center;
+    width: 100%;
+    height: max-content;
+    border: 1px solid  lightgray;
+    border-radius: 1rem;
+}
+
+.advice p{
+    margin: 0.5rem;
+    font-size: larger;
+    margin-bottom: 4rem;
+}
+.options{
+    color: white;
+    height: 90%;
+    width: 20%;
+    position: fixed;
+    top: 10%;
+    background-color: rgb(5, 26, 53);
+    border-right:0.05rem solid lightgray;
+    z-index: 1;
+}
+.option{
+    width: 100%;
+    height:7%;
+    border:0.05rem solid rgb(8, 39, 83);
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+}
+
+.option p{
+    font-size: 1.25rem;
+    margin-left:2rem;
+
+}
+
+.option:hover{
+    color:lightgray;
+    background-color: rgb(6, 77, 170);
+    cursor: pointer;
+}
+
+.contact{
+    margin-top:15rem;
+}
+.page{
+    color: white;
+    height: 90%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-left: 20.3%;
+    background-color:rgb(2, 3, 48);
+}
+
+.heading{
+    margin-left: 1rem;
+    font-size: 3rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.content{
+    height: 60%;
+    width: 90%;
+    margin:1rem;
+    font-size: 1.35rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+}
+
+.image{
+    width:20rem;
+    height:20rem;
+    border-radius: 50%;
+    overflow: hidden;   
+}
+
+.image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content-text{
+    width: 60%;
+    height: 100%;
+    padding: 2rem;
+    text-align: center;
+}
+
+.ending{
+    margin-left: 1rem;
+    font-size: 3rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+}
