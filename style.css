@@ -30,7 +30,7 @@ header a{
 }
 
 header a:hover{
-    color: rgb(70, 70, 83);;
+    color: rgb(70, 70, 83);
 }
 
 .fake-header{
@@ -75,25 +75,27 @@ header a:hover{
     width: 20%;
     position: fixed;
     top: 10%;
-    background-color: rgb(6, 6, 46);
+    background-color: rgb(0, 0, 34);
     border-right:0.05rem solid lightgray;
     z-index: 2;
 }
 form{
     text-align: center;
-    width: 100%;
-    height: 50%;
+    width: 90%;
+    height: 45%;
+    border: 1px solid white;
+    border-radius: 1rem;
+    margin: 0.5rem;
 }
 form h3{
     margin: 2rem;
 }
 form button{
-    width: 10rem;
-    height: 3rem;
+    width: 5rem;
+    height: 2.5rem;
     padding: 0.5rem;
     font-size: larger;
     font-weight: bold;
-    margin: 2rem;
     border-radius: 0.5rem;
     color: lightgray;
     background: #0b0d6e;
@@ -103,8 +105,9 @@ form h2{
 }
 
 .advice{
+    margin-left: 0.5rem;
     text-align: center;
-    width: 100%;
+    width: 90%;
     height: max-content;
     border: 1px solid  lightgray;
     border-radius: 1rem;
@@ -152,8 +155,7 @@ form h2{
 .page{
     color: white;
     height: 90%;
-    overflow-x: auto;
-    overflow-y: hidden;
+    width: 80%;
     margin-left: 20.3%;
     background-color:rgb(2, 3, 48);
 }
@@ -198,4 +200,62 @@ form h2{
     font-size: 3rem;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-align: center;
+}
+
+.about-page{
+    margin-left: 1rem;
+    font-size: 1.5rem;
+}
+
+.main{
+    height: 70%;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.box{
+    margin-left: 5rem;
+    border: 1px solid lightgray;
+    border-radius: 3rem;
+    flex-shrink: 0;
+    text-align: center;
+    font-size:larger;
+    padding: 1rem;
+}
+.project{
+    height: 95%;
+    width: 70%;
+    background-image: url(IMG-20250724-WA0001.jpg);
+}
+.skill{
+    height: 90%;
+    width: 30%;
+    background-image: url(IMG-20250724-WA0002.jpg);
+}
+
+.share{
+    height: 90%;
+    width: 50%;
+    background-image: url(IMG-20250724-WA0003.jpg);
+}
+.target{
+    height: 80%;
+    width: 45%;
+    background-image: url(IMG-20250724-WA0004.jpg);
+}
+.activity{
+    height: 85%;
+    width: 40%;
+    background-image: url(IMG-20250724-WA0005.jpg);
+}
+.page7 a{
+    font-size: xx-large;
+    margin:1rem;
+    margin-left: 2rem;
+    color:lightgray;
+    text-decoration: none;
+}
+
+.page7 a:hover{
+    color: rgb(70, 70, 83);
 }
