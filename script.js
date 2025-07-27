@@ -4,19 +4,44 @@ let options=document.querySelectorAll('.option')
 let pages=document.querySelectorAll('.page')
 let url="https://api.adviceslip.com/advice"
 let advice=document.querySelector('.advice p')
+let buttons=document.querySelectorAll('.button')
+// let backendUrl="https://backend-website-tsga.onrender.com/login"
 
-async function read(){
-    let response= await fetch(url);
-    let data= await response.json()
-    return data.slip.advice
-}
+// window.addEventListener('load',()=>{  //to handle render free tier sleep mode
+//     fetch(backendUrl)
+// })
 
-function modify(){
+window.addEventListener('DOMContentLoaded',async ()=>{  //to handle render free tier sleep mode
+    const res=await fetch('https://backend-website-tsga.onrender.com/api/notes')
+    const notes=await res.json()
+    notes.forEach((note)=>{
+        let main=document.querySelectorAll('.main')
+        let div=document.createElement('div')
+        div.classList.add(note.class,'box')
+        div.innerHTML=note.content
+        div.setAttribute('data-id',note._id)
+        main.forEach((ele)=>{
+            if(ele.lastElementChild.classList[0]===div.classList[0]){
+                ele.prepend(div)
+                eventDelete()
+                eventEdit()
+            }
+        })
+    })
+})
+
+buttons.forEach((button)=>{
+            button.style.visibility='hidden'
+        })
+
+function canModify(){
     const urlParams=new URLSearchParams(window.location.search);
     const isAuthenticated=urlParams.get('authenticated');
     if (isAuthenticated){
-        page2=document.querySelector('.page2')
-        page2.innerText='Welcome dosto'
+        buttons.forEach((button)=>{
+            button.style.visibility='visible'
+        })
+        //yaha mein authorization dunga
     }
 }
 
@@ -32,6 +57,12 @@ menu_icons.forEach((menu_icon)=>{
     })
 })
 
+async function read(){
+    let response= await fetch(url);
+    let data= await response.json()
+    return data.slip.advice
+}
+
 options.forEach((option)=>{
     option.addEventListener('click',()=>{
         pages.forEach((page)=>{
@@ -42,4 +73,60 @@ options.forEach((option)=>{
     })
 })
 
-modify()
+function eventDelete(){
+    let delet=document.querySelectorAll('.delete')
+    delet.forEach((element)=>{
+        element.addEventListener('click',async ()=>{
+            let delBox=element.closest('.box-heading').closest('.box')
+            const res =await fetch(`https://backend-website-tsga.onrender.com/api/notes/${delBox.getAttribute('data-id')}`,
+            {method:"DELETE"})
+        })
+    })
+}
+
+function eventEdit(){
+    let edit=document.querySelectorAll('.edit')
+    edit.forEach((element)=>{
+        element.addEventListener('click',()=>{
+            let form=document.querySelector('.form-edit')
+            form.style.visibility='visible'
+            form.children[0].value=element.closest('.box-heading').closest('.box').innerHTML
+            let editBox=element.closest('.box-heading').closest('.box')
+            console.log(editBox.getAttribute('data-id',),editBox)
+            let btn=document.querySelector('.btn')
+            btn.addEventListener('click',async (event)=>{
+                let newHTML=form.children[0].value
+                event.preventDefault()
+                const res =await fetch(`https://backend-website-tsga.onrender.com/api/notes/${editBox.getAttribute('data-id')}`,
+                    {method:"PUT",headers:{'Content-Type':'application/json'},body:JSON.stringify({content:newHTML})})
+                    console.log('true')
+                eventDelete()
+                eventEdit()
+                form.style.visibility='hidden'
+            })
+        })
+    })
+}
+
+let add=document.querySelectorAll('.add')
+add.forEach((element)=>{
+    element.addEventListener('click',async ()=>{
+        let main=element.closest('.page').querySelector('.main')
+        let newEle=document.createElement('div')
+        newEle.classList=element.closest('.page').querySelector('.main').lastElementChild.classList
+        newEle.innerHTML=element.closest('.page').querySelector('.main').lastElementChild.innerHTML
+        const res =await fetch('https://backend-website-tsga.onrender.com/api/notes',
+            {method:"POST",headers:{'Content-Type':'application/json'},body:JSON.stringify({content:newEle.innerHTML,class:newEle.classList[0]})})
+        const note=await res.json()
+        newEle.setAttribute('data-id',note._id)
+        main.prepend(newEle)
+        eventDelete()
+        eventEdit()
+    })
+})
+
+
+
+canModify()
+eventDelete()
+eventEdit()

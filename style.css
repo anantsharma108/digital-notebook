@@ -45,7 +45,7 @@ header a:hover{
 .header-text i{
     font-size: 3rem;
 }
-.text-add{
+.text-modify{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,7 +82,7 @@ header a:hover{
 form{
     text-align: center;
     width: 90%;
-    height: 45%;
+    height: 50%;
     border: 1px solid white;
     border-radius: 1rem;
     margin: 0.5rem;
@@ -159,11 +159,11 @@ form h2{
     margin-left: 20.3%;
     background-color:rgb(2, 3, 48);
 }
-
 .heading{
     margin-left: 1rem;
     font-size: 3rem;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
 }
 
 .content{
@@ -227,10 +227,51 @@ form h2{
     width: 70%;
     background-image: url(IMG-20250724-WA0001.jpg);
 }
+
+.box-heading{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content:space-evenly;
+}
+.box-content{
+    height: 90%;
+    width: 100%;
+    display: flex;
+}
+.box-content-text{
+    height: 100%;
+    width: 60%;
+}
+.box-content-video{
+    margin-top: 4rem;
+    height: 100%;
+    width: 40%;
+}
+.box-content-video iframe{
+    height: 9rem;
+    width: 16rem;
+    border-radius: 1rem;
+    border: 0.05rem solid lightgray;
+    object-fit: cover;
+}
 .skill{
     height: 90%;
-    width: 30%;
+    width: 40%;
     background-image: url(IMG-20250724-WA0002.jpg);
+}
+.box-heading-image{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: 0.05rem solid lightgray;
+    overflow: hidden;
+}
+
+.box-heading-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .share{
@@ -238,6 +279,25 @@ form h2{
     width: 50%;
     background-image: url(IMG-20250724-WA0003.jpg);
 }
+.box-content-image{
+    width: 40%;
+    height: 100%;
+}
+.box-content-image div{
+    height: 90%;
+    width: 90%;
+    margin-top: 0.5rem;
+    border-radius: 1rem;
+    border: 1px solid lightgray;
+    overflow: hidden;
+}
+
+.box-content-image div img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
 .target{
     height: 80%;
     width: 45%;
@@ -245,7 +305,7 @@ form h2{
 }
 .activity{
     height: 85%;
-    width: 40%;
+    width: 45%;
     background-image: url(IMG-20250724-WA0005.jpg);
 }
 .page7 a{
@@ -258,4 +318,42 @@ form h2{
 
 .page7 a:hover{
     color: rgb(70, 70, 83);
+}
+
+.button{
+    color: lightgray;
+    height:2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.05rem solid lightgray;
+    border-radius:0.5rem;
+    margin: 1rem;
+}
+.add{
+    font-size: 1.25rem;
+}
+
+.button:hover{
+    color: rgb(70, 70, 83);
+    cursor: pointer;
+}
+
+.form-edit{
+    height: 90%;
+    width: 90%;
+    margin: 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background-color: rgb(2, 3, 48);
+    visibility: hidden;
+}
+.form-edit textarea{
+    height: 90%;
+    width: 90%;
+    font-size: 1rem;
+    background-color: lightgray;
 }
