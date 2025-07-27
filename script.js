@@ -4,14 +4,8 @@ let options=document.querySelectorAll('.option')
 let pages=document.querySelectorAll('.page')
 let url="https://api.adviceslip.com/advice"
 let advice=document.querySelector('.advice p')
-let buttons=document.querySelectorAll('.button')
-// let backendUrl="https://backend-website-tsga.onrender.com/login"
 
-// window.addEventListener('load',()=>{  //to handle render free tier sleep mode
-//     fetch(backendUrl)
-// })
-
-window.addEventListener('DOMContentLoaded',async ()=>{  //to handle render free tier sleep mode
+window.addEventListener('DOMContentLoaded',async ()=>{
     const res=await fetch('https://backend-website-tsga.onrender.com/api/notes')
     const notes=await res.json()
     notes.forEach((note)=>{
@@ -28,18 +22,19 @@ window.addEventListener('DOMContentLoaded',async ()=>{  //to handle render free 
             }
         })
     })
+    let buttons=document.querySelectorAll('.button')
+    buttons.forEach((button)=>{
+            button.style.visibility='hidden'
+            })
 })
 
-buttons.forEach((button)=>{
-            button.style.visibility='hidden'
-        })
 
 function canModify(){
     const urlParams=new URLSearchParams(window.location.search);
     const isAuthenticated=urlParams.get('authenticated');
     if (isAuthenticated){
         buttons.forEach((button)=>{
-            button.style.visibility='visible'
+            // button.style.visibility='visible'
         })
         //yaha mein authorization dunga
     }
@@ -80,6 +75,7 @@ function eventDelete(){
             let delBox=element.closest('.box-heading').closest('.box')
             const res =await fetch(`https://backend-website-tsga.onrender.com/api/notes/${delBox.getAttribute('data-id')}`,
             {method:"DELETE"})
+            delBox.remove()
         })
     })
 }
@@ -100,6 +96,7 @@ function eventEdit(){
                 const res =await fetch(`https://backend-website-tsga.onrender.com/api/notes/${editBox.getAttribute('data-id')}`,
                     {method:"PUT",headers:{'Content-Type':'application/json'},body:JSON.stringify({content:newHTML})})
                     console.log('true')
+                element.closest('.box-heading').closest('.box').innerHTML=form.children[0].value
                 eventDelete()
                 eventEdit()
                 form.style.visibility='hidden'
@@ -111,7 +108,7 @@ function eventEdit(){
 let add=document.querySelectorAll('.add')
 add.forEach((element)=>{
     element.addEventListener('click',async ()=>{
-        let main=element.closest('.page').querySelector('.main')
+        // let main=element.closest('.page').querySelector('.main')
         let newEle=document.createElement('div')
         newEle.classList=element.closest('.page').querySelector('.main').lastElementChild.classList
         newEle.innerHTML=element.closest('.page').querySelector('.main').lastElementChild.innerHTML
