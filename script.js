@@ -26,19 +26,14 @@ window.addEventListener('DOMContentLoaded',async ()=>{
     buttons.forEach((button)=>{
             button.style.visibility='hidden'
             })
-})
-
-
-function canModify(){
     const urlParams=new URLSearchParams(window.location.search);
     const isAuthenticated=urlParams.get('authenticated');
     if (isAuthenticated){
         buttons.forEach((button)=>{
-            // button.style.visibility='visible'
+            button.style.visibility='visible'
         })
-        //yaha mein authorization dunga
     }
-}
+})
 
 menu_bar.style.visibility='hidden'
 menu_icons.forEach((menu_icon)=>{
@@ -121,9 +116,5 @@ add.forEach((element)=>{
         eventEdit()
     })
 })
-
-
-
-canModify()
 eventDelete()
 eventEdit()
