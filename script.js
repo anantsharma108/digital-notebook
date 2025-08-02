@@ -4,7 +4,16 @@ let options=document.querySelectorAll('.option')
 let pages=document.querySelectorAll('.page')
 let url="https://api.adviceslip.com/advice"
 let advice=document.querySelector('.advice p')
+let main=document.querySelectorAll('.main')
 
+let buttons=document.querySelectorAll('.button')
+    buttons.forEach((button)=>{
+            button.style.visibility='hidden'
+            })
+
+main.forEach((element)=>{
+    element.lastElementChild.style.visibility='hidden'
+})
 window.addEventListener('DOMContentLoaded',async ()=>{
     const res=await fetch('https://backend-website-tsga.onrender.com/api/notes')
     const notes=await res.json()
@@ -22,6 +31,9 @@ window.addEventListener('DOMContentLoaded',async ()=>{
             }
         })
     })
+    let wait=document.querySelector('.wait')
+    wait.style.visibility='hidden'
+
     let buttons=document.querySelectorAll('.button')
     buttons.forEach((button)=>{
             button.style.visibility='hidden'
@@ -83,14 +95,12 @@ function eventEdit(){
             form.style.visibility='visible'
             form.children[0].value=element.closest('.box-heading').closest('.box').innerHTML
             let editBox=element.closest('.box-heading').closest('.box')
-            console.log(editBox.getAttribute('data-id',),editBox)
             let btn=document.querySelector('.btn')
             btn.addEventListener('click',async (event)=>{
                 let newHTML=form.children[0].value
                 event.preventDefault()
                 const res =await fetch(`https://backend-website-tsga.onrender.com/api/notes/${editBox.getAttribute('data-id')}`,
                     {method:"PUT",headers:{'Content-Type':'application/json'},body:JSON.stringify({content:newHTML})})
-                    console.log('true')
                 element.closest('.box-heading').closest('.box').innerHTML=form.children[0].value
                 eventDelete()
                 eventEdit()
@@ -103,7 +113,7 @@ function eventEdit(){
 let add=document.querySelectorAll('.add')
 add.forEach((element)=>{
     element.addEventListener('click',async ()=>{
-        // let main=element.closest('.page').querySelector('.main')
+        let main=element.closest('.page').querySelector('.main')
         let newEle=document.createElement('div')
         newEle.classList=element.closest('.page').querySelector('.main').lastElementChild.classList
         newEle.innerHTML=element.closest('.page').querySelector('.main').lastElementChild.innerHTML
