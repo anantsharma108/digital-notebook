@@ -43,6 +43,9 @@ window.addEventListener('DOMContentLoaded',async ()=>{
     if (isAuthenticated){
         buttons.forEach((button)=>{
             button.style.visibility='visible'
+            main.forEach((element)=>{
+                element.lastElementChild.style.visibility='visible'
+            })
         })
     }
 })
@@ -80,6 +83,7 @@ function eventDelete(){
     delet.forEach((element)=>{
         element.addEventListener('click',async ()=>{
             let delBox=element.closest('.box-heading').closest('.box')
+            console.log(delBox)
             const res =await fetch(`https://backend-website-tsga.onrender.com/api/notes/${delBox.getAttribute('data-id')}`,
             {method:"DELETE"})
             delBox.remove()
@@ -90,12 +94,19 @@ function eventDelete(){
 function eventEdit(){
     let edit=document.querySelectorAll('.edit')
     edit.forEach((element)=>{
+        count=0
         element.addEventListener('click',()=>{
+            if (count==1){
+                return
+            }
             let form=document.querySelector('.form-edit')
             form.style.visibility='visible'
             form.children[0].value=element.closest('.box-heading').closest('.box').innerHTML
             let editBox=element.closest('.box-heading').closest('.box')
             let btn=document.querySelector('.btn')
+            btn.replaceWith(btn.cloneNode(true)); // removes all old listeners
+            btn = document.querySelector('.btn'); // reselect after clone
+            count=1
             btn.addEventListener('click',async (event)=>{
                 let newHTML=form.children[0].value
                 event.preventDefault()
